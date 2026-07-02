@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #3B82F6;
+  --color-brand-success: #22C55E;
+  --color-brand-warning: #F59E0B;
+  --color-brand-danger: #EF4444;
+  --font-sans: 'Inter', 'Geist', 'SF Pro Display', system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg-main: #F5F7FA;
+    --surface: #FFFFFF;
+    --surface-secondary: #EEF2F6;
+    --color-primary: #2563EB;
+    --color-success: #16A34A;
+    --color-warning: #F59E0B;
+    --color-danger: #DC2626;
+    --text-primary: #111827;
+    --text-muted: #64748B;
+    --border-color: #D6DCE5;
+    
+    /* Neumorphic Shadows - Subtle and Precise */
+    --shadow-neumorph: 10px 10px 24px rgba(15, 23, 42, 0.06), -10px -10px 24px rgba(255, 255, 255, 0.85);
+    --shadow-neumorph-inset: inset 4px 4px 10px rgba(15, 23, 42, 0.05), inset -4px -4px 10px rgba(255, 255, 255, 0.8);
+    --shadow-card-hover: 12px 12px 28px rgba(15, 23, 42, 0.08), -12px -12px 28px rgba(255, 255, 255, 0.9);
+    
+    /* Glassmorphism Configuration (Navigation & Dialogs Only) */
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(15, 23, 42, 0.05);
+  }
+
+  .dark {
+    --bg-main: #0B1220;
+    --surface: #141B2D;
+    --surface-secondary: #1B2335;
+    --color-primary: #3B82F6;
+    --color-success: #22C55E;
+    --color-warning: #F59E0B;
+    --color-danger: #EF4444;
+    --text-primary: #F8FAFC;
+    --text-muted: #94A3B8;
+    --border-color: rgba(255, 255, 255, 0.08);
+    
+    /* Dark Neumorphic Shadows - Recessed and Precision Look */
+    --shadow-neumorph: 10px 10px 24px rgba(0, 0, 0, 0.45), -10px -10px 24px rgba(255, 255, 255, 0.015);
+    --shadow-neumorph-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.5), inset -4px -4px 10px rgba(255, 255, 255, 0.015);
+    --shadow-card-hover: 12px 12px 28px rgba(0, 0, 0, 0.5), -12px -12px 28px rgba(255, 255, 255, 0.02);
+    
+    /* Dark Glassmorphism */
+    --glass-bg: rgba(20, 27, 45, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.05);
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    transition: background-color 0.15s ease, color 0.15s ease;
+    @apply antialiased tracking-tight font-medium text-[16px];
+  }
+
+  /* Structural 8-point system spacing resets */
+  h1 {
+    @apply font-black tracking-tight text-[52px] leading-none text-slate-900 dark:text-slate-100;
+  }
+  h2 {
+    @apply font-extrabold tracking-tight text-[34px] leading-tight text-slate-900 dark:text-slate-100;
+  }
+  h3 {
+    @apply font-bold tracking-tight text-[22px] leading-snug text-slate-800 dark:text-slate-200;
+  }
+}
+
+/* Bold Typography Classes */
+.font-black-title {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  @apply text-slate-900 dark:text-white;
+}
+
+.stat-number {
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  @apply text-slate-900 dark:text-white;
+}
+
+/* 55% Neumorphism Precision Panels */
+.neumorph-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-neumorph);
+  border-radius: 14px; /* Industrial tight corners */
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.neumorph-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.neumorph-inset {
+  box-shadow: var(--shadow-neumorph-inset);
+  background-color: var(--surface-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.neumorph-button {
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.15), -4px -4px 10px rgba(255,255,255,0.01);
+  border-radius: 12px;
+  @apply transition-all active:scale-[0.98];
+}
+
+.neumorph-button:active {
+  box-shadow: var(--shadow-neumorph-inset);
+}
+
+/* 30% Glassmorphism - Restricted to Sidebars, TopNavs, & Alerts Overlays */
+.glass-nav {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Industrial Status Indicators */
+.badge-status {
+  @apply text-[11px] font-extrabold tracking-wider px-2.5 py-1 rounded-md uppercase inline-flex items-center gap-1.5 border;
+}
+
+.badge-online {
+  background-color: rgba(22, 163, 74, 0.08);
+  border-color: rgba(22, 163, 74, 0.2);
+  color: var(--color-success);
+}
+
+.badge-offline {
+  background-color: rgba(100, 116, 139, 0.08);
+  border-color: rgba(100, 116, 139, 0.2);
+  color: var(--text-muted);
+}
+
+.badge-warning {
+  background-color: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.2);
+  color: var(--color-warning);
+}
+
+.badge-critical {
+  background-color: rgba(220, 38, 38, 0.08);
+  border-color: rgba(220, 38, 38, 0.2);
+  color: var(--color-danger);
+}
+
+/* Custom Scrollbars for density */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Timeline scan ticker */
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  bottom: -24px;
+  width: 2px;
+  background-color: var(--border-color);
+  transform: translateX(-50%);
+}
+.timeline-dot-last::after {
+  display: none;
+}
