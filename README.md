@@ -1,6 +1,5 @@
 # SafeSite AI — Construction Safety Compliance Platform
-
-                                              https://safesite-ai-nine.vercel.app/
+ deployment link :-                                           https://safesite-ai-nine.vercel.app/
 
 **SafeSite AI** is a premium, enterprise-grade Construction Safety Operating System designed for site supervisors, safety marshals, and operations managers. It acts as an automated safety gatekeeper, verifying personnel identities, auditing trade guidelines, and classifying PPE compliance in real-time.
 
